@@ -15,3 +15,5 @@ Returns `boolean`:
 
 - `true` if the priority was set;
 - `false` if the priority is invalid.
+
+New tasks have `medium` priority by default.
