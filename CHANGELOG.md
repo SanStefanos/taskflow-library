@@ -1,7 +1,5 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
 ## [Unreleased]
 
-No unreleased changes yet.
+### Added
+
+- Task priority support with `setPriority()` method
