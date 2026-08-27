@@ -10,10 +10,17 @@ class Board {
     }
 
     getTasks(status) {
-        if (status) {
-            return this.tasks.filter(t => t.status === status);
+        if (!status) {
+            return this.tasks;
         }
-        return this.tasks;
+
+        const validStatuses = ['todo', 'in-progress', 'done'];
+
+        if (!validStatuses.includes(status)) {
+            return [];
+        }
+
+        return this.tasks.filter(task => task.status === status);
     }
 }
 
