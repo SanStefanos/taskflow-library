@@ -17,3 +17,11 @@ Returns `boolean`:
 - `false` if the priority is invalid.
 
 New tasks have `medium` priority by default.
+
+### addLabel(label)
+
+Adds a unique label to the task.
+
+A task can have no more than five labels.
+
+Returns `true` if the label was added and `false` otherwise.

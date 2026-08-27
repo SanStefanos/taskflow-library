@@ -29,10 +29,19 @@ class Task {
         return false;
     }
 
-    addLabel(label) {
-    if (label && !this.labels.includes(label)) {
+addLabel(label) {
+    const maxLabels = 5;
+
+    if (
+        label &&
+        !this.labels.includes(label) &&
+        this.labels.length < maxLabels
+    ) {
         this.labels.push(label);
+        return true;
     }
+
+    return false;
 }
 
 }

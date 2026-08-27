@@ -1,23 +1,30 @@
 const Task = require('../src/task');
 
-describe('Task Priority', () => {
-    test('should use medium priority by default', () => {
+describe('Task Labels', () => {
+    test('should add a label', () => {
         const task = new Task('Test', 'Description');
 
-        expect(task.priority).toBe('medium');
+        expect(task.addLabel('backend')).toBe(true);
+        expect(task.labels).toEqual(['backend']);
     });
 
-    test('should set valid priority', () => {
+    test('should not add duplicate labels', () => {
         const task = new Task('Test', 'Description');
 
-        expect(task.setPriority('high')).toBe(true);
-        expect(task.priority).toBe('high');
+        task.addLabel('backend');
+        task.addLabel('backend');
+
+        expect(task.labels).toEqual(['backend']);
     });
 
-    test('should reject invalid priority', () => {
+    test('should not allow more than five labels', () => {
         const task = new Task('Test', 'Description');
 
-        expect(task.setPriority('critical')).toBe(false);
-        expect(task.priority).toBe('medium');
+        ['one', 'two', 'three', 'four', 'five'].forEach(label => {
+            task.addLabel(label);
+        });
+
+        expect(task.addLabel('six')).toBe(false);
+        expect(task.labels).toHaveLength(5);
     });
 });
